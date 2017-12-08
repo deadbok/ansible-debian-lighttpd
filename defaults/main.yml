@@ -1,0 +1,14 @@
+## States of packages and services ##
+# Set initial apache state. Recommended values: `started` or `stopped`
+lighttpd_state: started
+
+# Set server hud state when configuration changes are made.
+lighttpd_restart_state: restarted
+
+# State of packages needed, use "installed" to make sure they are installed and
+# "latest" to make sure they are updated.
+lighttpd_packagess_state: latest
+
+## Lighttpd modules ##
+lighttpd_modules:
+  - accesslog

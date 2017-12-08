@@ -1,0 +1,13 @@
+---
+- name: Enable lighttpd modules
+  command: "lighty-enable-mod {{ item }}"
+  with_items: "{{ lighttpd_modules }}"
+  notify: Restart lighttpd
+  become: yes
+
+- name: Enable the lighttpd service.
+  service:
+    name: "{{ lighttpd_service }}"
+    state: "{{ lighttpd_state }}"
+  notify: Restart lighttpd
+  become: yes
