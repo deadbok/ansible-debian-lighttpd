@@ -1,4 +1,12 @@
 ---
+- name: Add site root directory to lighttpd configuration
+  lineinfile:
+    path: /etc/lighttpd/lighttpd.conf
+    regexp: '^server.document-root'
+    line: 'server.document-root = "{{ lighttpd_site_root }}"'
+  notify: Restart lighttpd
+  become: yes
+
 - include_tasks: "Debian-lighttpd-modules.yml"
   with_items: "{{ lighttpd_modules }}"
 

@@ -12,3 +12,7 @@ lighttpd_packagess_state: latest
 ## Lighttpd modules ##
 lighttpd_modules:
   - accesslog
+
+## Site
+# Site root
+lighttpd_site_root: "/var/ww/html"
