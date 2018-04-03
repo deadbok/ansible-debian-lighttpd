@@ -1,0 +1,13 @@
+---
+- name: Check if module {{ item }} is enabled
+  find:
+    paths: /etc/lighttpd/conf-enabled
+    pattern: "*{{ item }}.conf"
+    file_type: link
+  register: find_module
+
+- name: Enable lighttpd module {{ item }}
+  command: "lighty-enable-mod {{ item }}"
+  notify: Restart lighttpd
+  become: yes
+  when: find_module.matched == 0

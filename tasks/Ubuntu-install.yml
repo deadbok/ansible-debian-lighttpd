@@ -1,0 +1,13 @@
+---
+- name: Update apt cache.
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+
+- name: Install lighttpd
+  apt:
+    name: "{{ item }}"
+    state: "{{ lighttpd_packagess_state }}"
+  with_items: "{{ lighttpd_packages }}"
+  become: yes
